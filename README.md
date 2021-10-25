@@ -102,22 +102,12 @@ Project G.H.O.S.T. es un videojuego cooperativo donde cada jugador controla a un
 
 Project G.H.O.S.T beben de dos grandes géneros:
 
-- **Puzles**: es un género de [videojuegos](https://es.wikipedia.org/wiki/Videojuegos) que se caracteriza por exigir agilidad mental al jugador para resolver enigmas por lo regular en una sola pantalla. Involucran problemas de lógica, matemáticas, estrategia, reconocimiento de patrones, completar palabras o hasta simple azar. En Project G.H.O.S.T los jugadores deben colaborar para resolver diversos puzles. 
+- **Puzles**: es un género de videojuegos que se caracteriza por exigir agilidad mental al jugador para resolver enigmas por lo regular en una sola pantalla. Involucran problemas de lógica, matemáticas, estrategia, reconocimiento de patrones, completar palabras o hasta simple azar. En Project G.H.O.S.T los jugadores deben colaborar para resolver diversos puzles. 
 
-*Ilustración 2 - Ejemplo juego puzles THE WITNESS (Jonathan Blow)*
-
-*Ilustración 1 - Ejemplo juego puzles PORTAL 2 (VALVe)*
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.003.png)![The Witness es el nuevo juego gratuito de Epic Games Store](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.004.jpeg)![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.005.png)![portal-level – Comic Geekos](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.006.jpeg)
 
 - **Aventura Gráfica:** La dinámica de este género consiste en ir progresando en la historia a través de la resolución de diversos rompecabezas, planteados como situaciones que se suceden en la historia, interactuando con otros personajes y objetos.
 
-![Grim Fandango cast will reunite at E3 for an anniversary celebration |  PCGamesN](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.007.jpeg)
 
-*Ilustración  SEQ Ilustración \\* ARABIC 3 - Ejemplo juego aventura-gráfica GRIM FANDANGO (Lucas Arts)*
-
-![Todas Gamers - Retroanálisis de Runaway: A Road Adventure](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.008.png)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 4 - Ejemplo juego aventura-gráfica RUNAWAY (Pendulo)*
 1. ## Propósito y público objetivo
 
 El objetivo principal de Project G.H.O.S.T es ofrecer a los usuarios una experiencia cooperativa inmersiva, atractiva e interesante, a la par que divertida. 
