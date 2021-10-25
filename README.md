@@ -129,7 +129,7 @@ Como se ha explicado anteriormente, la jugabilidad va a contar con mecánicas pr
 Project G.H.O.S.T tiene un estilo visual complejo, con detalles que encajan perfectamente con su **estilo oscuro y lúgubre**. El estilo visual que más encaja con este concepto es el de dibujo **pixelart**, debido a que permite crear escenarios y personajes relativamente complejos en poco tiempo. Los personajes serán definidos con colores oscuros y fríos. 
 
 
-1.7 ## Alcance
+1.7  Alcance
 
 El videojuego contará con un número de puzles suficientes para considerarlo un juego completo con el ciclo de historia principal terminado, pero por el tipo de juego queda abierta la posibilidad de incluir contenido adicional de forma sencilla. Además, está abierto a crear nuevas historias o secuelas a raíz de la realización de este
 
