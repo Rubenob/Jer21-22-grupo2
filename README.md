@@ -2,3 +2,14 @@
 # Game Design Document
 ## Fase 1 Juegos en red
 Practica Juegos en red universidad Rey Juan Carlos 
+
+
+INFERNO GAMES – EQUIPO 2
+
+DANIEL CALDÉS GARCÍA
+
+MATEO HERNANDEZ GONZALEZ
+
+MIGUEL ÁNGEL OSUNA GALINDO
+
+RUBÉN ORTEGA BERRUGUETE
