@@ -128,13 +128,6 @@ Como se ha explicado anteriormente, la jugabilidad va a contar con mecánicas pr
 
 Project G.H.O.S.T tiene un estilo visual complejo, con detalles que encajan perfectamente con su **estilo oscuro y lúgubre**. El estilo visual que más encaja con este concepto es el de dibujo **pixelart**, debido a que permite crear escenarios y personajes relativamente complejos en poco tiempo. Los personajes serán definidos con colores oscuros y fríos. 
 
-![El terror de Lamentum, el juego pixel art de Obscure Tales, llegará a  Switch - Vandal](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.009.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 5- Ejemplo de aspecto visual pixelart LAMENTUM (Obscure Tales)*
-
-![Outlast – En el Nombre del Juego](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.010.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 6 - Ejemplo estética lúgubre y siniestra OUTLAST (Red Barrels)*
 
 1. ## Alcance
 
@@ -216,17 +209,14 @@ En esta sección se especifican con detalle cada una de las pantallas que compon
 
 El siguiente diagrama de estados muestra las pantallas presentes a lo largo de Project G.H.O.S.T. y las transiciones entre ellas.
 
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.011.jpeg)
 
-*Ilustración  SEQ Ilustración \\* ARABIC 7 - Diagrama de flujo de las diferentes pantallas del juego*
+
+
 
 ## 3.2	Menú principal
 
 Se presenta aquí el boceto de la pantalla de Menú Principal:
 
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.012.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 8 - Prototipo interfaz de Menu Principal*
 
 Lista y descripción de todos sus componentes: 
 
@@ -244,9 +234,6 @@ Lista y descripción de todos sus componentes: 
 
 A continuación, el boceto de la pantalla de Créditos:
 
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.013.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 9 - Prototipo interfaz de Créditos*
 
 Lista y descripción de todos sus componentes:
 
@@ -261,9 +248,6 @@ Lista y descripción de todos sus componentes:
 
 Se muestra ahora el boceto de la pantalla de Selección de Perfil:
 
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.014.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 10 - Prototipo interfaz de Selección de Perfil*
 
 Lista y descripción de todos sus componentes:
 
@@ -282,13 +266,6 @@ Lista y descripción de todos sus componentes:
 
 Boceto básico de la pantalla de Juego:
 
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.015.jpeg)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 11 - Prototipo interfaz de Pantalla de Juego*
-
-*Ilustración  SEQ Ilustración \\* ARABIC 12 - Posible interfaz final de la pantalla de juego, boceto 1*
-
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.016.png)![https://lh3.googleusercontent.com/rJrHBFeqHILffqbzoj5sVq36bLE5KAEg6XK\_HyaptoC2OZpJk0hFjiRJMUk6V0ZmhShbhdB1nrmDMr9bivqn5BqssUZl-dSo3VvM76WVaIoB-cJpM56BCWIyGzxs0w4bI39AsPvC=s1600](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.017.jpeg)
 
 Lista y descripción de todos sus componentes:
 
@@ -301,11 +278,6 @@ Lista y descripción de todos sus componentes:
 
 Se dispone a continuación el boceto de la pantalla de Selección de Perfil:
 
-![Gráfico
-
-Descripción generada automáticamente](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.018.png)
-
-*Ilustración  SEQ Ilustración \\* ARABIC 13- Prototipo interfaz de Pantalla de Opciones*
 
 Lista y descripción de todos sus componentes:
 
@@ -336,7 +308,6 @@ Las imágenes incorporadas en el videojuego deberán mantener el formato .png
 
 Para el diseño de personajes se va a seguir un estilo pixel art similar a la obra de Cezary Lucznski <https://www.deviantart.com/luczynski>
 
-![https://lh3.googleusercontent.com/cv7KiUL8o7KZeEzHQfUqUeRa7R2ySzMac04U4VCWBZ4qMSqrG3QAyULAxCGBgU4tpGHtwSwU3ck-5yVsk9i2ufoOxyIVJCNI24ZtkYw-0T7\_StEN083IhESqjbMI9JvSiOVnZJbC=s1600](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.019.png)
 
 Fuente: <https://www.inkoherence.com/pixel-art-juego-tronos/> Artista: Cezary Lucznski
 
@@ -344,7 +315,6 @@ Para las animaciones se buscará aproximar el trabajo a realizado por “All pix
 
 (Video: <https://www.youtube.com/watch?v=OLhwdnaoTFg&t=104s> )
 
-![https://lh4.googleusercontent.com/IA4Cln8K1BiROp9o8R-EUfI1cWWWCb02AK0lnw867KQn4Kbk-Pv1pwbccTOHdCe6DHcpmNDnBh4y8zHmip3ESEtiCh\_YMlVLeMLx445GP2775zahzgzpp1zBocHc9PxL8IY4yfak=s1600](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.020.png)
 
 Fuente: https://vsgif.com/gif/3132643
 
@@ -393,15 +363,8 @@ El mapa se divide en 4 grandes zonas:
 
 - **El patio**: Es un patio con una fuente en el entro, que conecta la zona de recepción, la sala de empleados, el comedor y el edificio de administración (En el mapa referido como ‘mantenimiento’.
 
-*Ilustración  SEQ Ilustración \\* ARABIC 14- Bocetos del piso superior/ planta baja y patio*
-
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.021.png)![https://lh4.googleusercontent.com/rsOfCUy3G-KBS\_o2aEZbgucaF0fWLg1\_QUSeYIvhBi0yLEATL1pYG3gW9m77hPzl8Z3dsgEemYj6MnL8dw1VZBJvRn3DfWhdiPg7-MlTmvFhARBn7kG3at7tSIGe528YkxemE6aw=s1600](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.022.jpeg)
 
 - **El subsuelo**: zona final del juego que se desbloquea a medida que los jugadores avancen en el juego.
-
-*Ilustración  SEQ Ilustración \\* ARABIC 15 - Boceto del subsuelo*
-
-![](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.023.png)![https://lh4.googleusercontent.com/xqxPMIsvmvwPJGjzi0VBI-CLsY8AT5oP\_NVgAedV1KgdDyc7i1oxelt6Bq1UwdehQw1bJMfFRkXloXfviNVuBGkRjRlyD-F1XgnGSuHFNzlsak3Kr3tkuw-LV\_t9NIuno-agtFCm=s1600](Aspose.Words.1417e0c2-0761-4771-a9cc-da32a02906d5.024.jpeg)
 
 
 
