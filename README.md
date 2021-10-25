@@ -379,7 +379,7 @@ Durante el desarrollo del videojuego, se podrán reconocer varios tipos de puzle
 - **Interacción** **con el entorno**: Se distingue del anterior en que al menos uno de los objetos (o todos) no está en el inventario, bien porque no se pueda recoger, o bien porque no sea necesario combinarlo con nada.
 
 
-# **6	**Comunicación en red**
+# **6**	**Comunicación en red**
 
 La comunicación en red se manifestará de diversas maneras:
 
