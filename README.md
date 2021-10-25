@@ -84,11 +84,11 @@ RUBÉN ORTEGA BERRUGUETE
 
 En este documento se tratará el contenido del diseño y desarrollo del videojuego Project G.H.O.S.T, mediante el cual se busca presentar los principales elementos que caracterizan al videojuego, desde el apartado de diseño, sus características técnicas en cuanto a comunicación red, como el apartado gráfico, arte y música.
 
-1. ## Concepto del juego
+1.1 ## Concepto del juego
 
 Project G.H.O.S.T. es un videojuego cooperativo donde cada jugador controla a uno de los roles (humano y fantasma), que deben trabajar codo con codo para resolver los rompecabezas que se les presenten y así escapar del psiquiátrico en el que se encuentran atrapados.  
 
-1. ## Características principales
+1.2 ## Características principales
 
 - **Planteamiento sencillo**: historia sencilla desarrollada para crear una inmersión suficiente para que los jugadores sientan que tienen un objetivo en común. 
 
@@ -98,7 +98,7 @@ Project G.H.O.S.T. es un videojuego cooperativo donde cada jugador controla a un
 
 - **Atmósfera**: Project G.H.O.S.T debe tener diseños de puzles elaborados, siempre imbuidos con un aura tenebrosa a la par de misteriosa.
 
-1. ## Género
+1.3 ## Género
 
 Project G.H.O.S.T beben de dos grandes géneros:
 
@@ -108,13 +108,13 @@ Project G.H.O.S.T beben de dos grandes géneros:
 - **Aventura Gráfica:** La dinámica de este género consiste en ir progresando en la historia a través de la resolución de diversos rompecabezas, planteados como situaciones que se suceden en la historia, interactuando con otros personajes y objetos.
 
 
-1. ## Propósito y público objetivo
+1.4 ## Propósito y público objetivo
 
 El objetivo principal de Project G.H.O.S.T es ofrecer a los usuarios una experiencia cooperativa inmersiva, atractiva e interesante, a la par que divertida. 
 
 El target para esta producción es de un amplio rango de edad de jugadores no necesariamente muy experimentados en juegos de puzles y exploración; aunque debido a cierto contenido sensible implementado en él, no es apto para usuarios menores de 16 años.
 
-1. ## Jugabilidad
+1.5 ## Jugabilidad
 
 Como se ha explicado anteriormente, la jugabilidad va a contar con mecánicas propias de juegos de aventura gráfica combinados con puzles. Algunos ejemplos de mecánicas serían los siguientes:
 
@@ -124,12 +124,12 @@ Como se ha explicado anteriormente, la jugabilidad va a contar con mecánicas pr
 
 - La **dificultad** irá aumentando a medida que el juego avance, haciendo que los jugadores sientan que están progresando.
 
-1. ## Estilo visual
+1.6 ## Estilo visual
 
 Project G.H.O.S.T tiene un estilo visual complejo, con detalles que encajan perfectamente con su **estilo oscuro y lúgubre**. El estilo visual que más encaja con este concepto es el de dibujo **pixelart**, debido a que permite crear escenarios y personajes relativamente complejos en poco tiempo. Los personajes serán definidos con colores oscuros y fríos. 
 
 
-1. ## Alcance
+1.7 ## Alcance
 
 El videojuego contará con un número de puzles suficientes para considerarlo un juego completo con el ciclo de historia principal terminado, pero por el tipo de juego queda abierta la posibilidad de incluir contenido adicional de forma sencilla. Además, está abierto a crear nuevas historias o secuelas a raíz de la realización de este
 
@@ -151,7 +151,7 @@ En este apartado se pretende comunicar las bases de la jugabilidad de Project G.
 - **Planificación del puzle**: Los jugadores tendrán que reunir los objetos necesarios para su resolución, los cuales estarán por diversas zonas del mapa.
 
 
-## 2.2** 	Flujo de juego
+## 2.2 	Flujo de juego
 
 Se detalla aquí todo lo que verán los jugadores desde el momento en que inician el juego hasta completarlo por completo.
 
@@ -300,11 +300,11 @@ Lista y descripción de todos sus componentes:
 
 Project G.H.O.S.T. debe tener un carácter tétrico a la vez que lúgubre y misterioso. Para nuestros jóvenes protagonistas es todo un reto averiguar cómo han llegado allí y cómo van a conseguir escapar. Los colores deben ser fríos y apagados, los modelos muy básicos y la música acorde al suspense.
 
-## 4.1**	Artes 2D
+## 4.1	Artes 2D
 
 Las imágenes incorporadas en el videojuego deberán mantener el formato .png
 
-## 4.2**	Pixel Art o dibujo (pendiente)
+## 4.2	Pixel Art o dibujo (pendiente)
 
 Para el diseño de personajes se va a seguir un estilo pixel art similar a la obra de Cezary Lucznski <https://www.deviantart.com/luczynski>
 
@@ -318,7 +318,7 @@ Para las animaciones se buscará aproximar el trabajo a realizado por “All pix
 
 Fuente: https://vsgif.com/gif/3132643
 
-## 4.3**	Audio 
+## 4.3	Audio 
 
 Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañará al gameplay en todo momento (la cual estará en formato .ogg), y los efectos de sonido que ayudarán a generar una atmósfera más misteriosa y sombría (convertidos a formato .wav).
 
@@ -353,7 +353,7 @@ Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañ
 
 # **5**	**DISEÑO DE NIVEL**
 
-## 5.1**	MAPA
+## 5.1	MAPA
 
 El mapa se divide en 4 grandes zonas:
 
@@ -368,7 +368,7 @@ El mapa se divide en 4 grandes zonas:
 
 
 
-## 5.2**	PUZZLES
+## 5.2	PUZZLES
 
 Durante el desarrollo del videojuego, se podrán reconocer varios tipos de puzles:
 
@@ -379,7 +379,7 @@ Durante el desarrollo del videojuego, se podrán reconocer varios tipos de puzle
 - **Interacción** **con el entorno**: Se distingue del anterior en que al menos uno de los objetos (o todos) no está en el inventario, bien porque no se pueda recoger, o bien porque no sea necesario combinarlo con nada.
 
 
-# **6**	**Comunicación en red**
+# **6	**Comunicación en red**
 
 La comunicación en red se manifestará de diversas maneras:
 
