@@ -16,7 +16,7 @@ RUBÉN ORTEGA BERRUGUETE
 
 
 # **ÍNDICE DE CONTENIDO**
-[1. Introducción	 PAGEREF _Toc86089968 \h 1](#_Toc86089968)
+[1. Introducción](#_Toc86089968)
 
 [1.1	Concepto del juego	 PAGEREF _Toc86089969 \h 1](#_Toc86089969)
 
