@@ -330,10 +330,17 @@ En el diseño artístico se mantendrá una paleta de color para todo el proyecto
 
 Para los escenarios predominarán paletas de colores grises que gracias a su neutralidad permitirán enfocar mejor la atención del jugador en los personajes principales.
 
+![image](https://user-images.githubusercontent.com/69243718/138955930-97b42fd3-b430-409e-8119-f42fc80ff15c.png)
 
 El amarillo se reservará para momentos puntuales para hacer uso de su aspecto negativo relacionado a la depresión y al suicidio, que sumado al carácter frio y triste de los tonos azules permitirá dar pautas narrativas.
 
+![image](https://user-images.githubusercontent.com/69243718/138955955-a2d8ad91-4d8a-46da-b624-fb1707874e6b.png)
+![image](https://user-images.githubusercontent.com/69243718/138955967-e6ae66de-ea9e-411e-b4a6-52c1950da2a3.png)
+
 Haciendo uso de tonos marrones en la vestimenta se consigue crear relación con la depresión y un mal psicológico. Por ello, el personaje principal humano llevará tonos marrones, azules y amarillos. Mientras que el fantasma llevará marrones, azules y morado(magia). Para llamar la atención del jugador reservaremos el amarillo y morado así de forma intuitiva cada jugador sabrá donde tiene que centrar su atención.
+
+![image](https://user-images.githubusercontent.com/69243718/138955998-b4f1f52b-7b0f-47f6-b89b-7ddab54e9cb2.png)
+
 
 ## 4.1.2	Estilo artistico
 
