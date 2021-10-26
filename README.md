@@ -103,11 +103,13 @@ Project G.H.O.S.T. es un videojuego cooperativo donde cada jugador controla a un
 Project G.H.O.S.T beben de dos grandes géneros:
 
 - **Puzles**: es un género de videojuegos que se caracteriza por exigir agilidad mental al jugador para resolver enigmas por lo regular en una sola pantalla. Involucran problemas de lógica, matemáticas, estrategia, reconocimiento de patrones, completar palabras o hasta simple azar. En Project G.H.O.S.T los jugadores deben colaborar para resolver diversos puzles.  
+- 
 ![image](https://user-images.githubusercontent.com/69243718/138847810-9c528df4-c128-4529-a443-34ab29b19c0b.png)
 ![image](https://user-images.githubusercontent.com/69243718/138847827-cc10a32d-ed8d-41a1-a684-5f34fdd99d83.png)
 
 
 - **Aventura Gráfica:** La dinámica de este género consiste en ir progresando en la historia a través de la resolución de diversos rompecabezas, planteados como situaciones que se suceden en la historia, interactuando con otros personajes y objetos.
+
 ![image](https://user-images.githubusercontent.com/69243718/138848022-92c70434-0264-4779-826e-c181105682d4.png)
 ![image](https://user-images.githubusercontent.com/69243718/138848033-39d0df23-a4bd-4f71-a61e-0a3d4a70967b.png)
 
@@ -132,6 +134,7 @@ Como se ha explicado anteriormente, la jugabilidad va a contar con mecánicas pr
 ## 1.6  Estilo visual
 
 Project G.H.O.S.T tiene un estilo visual complejo, con detalles que encajan perfectamente con su **estilo oscuro y lúgubre**. El estilo visual que más encaja con este concepto es el de dibujo **pixelart**, debido a que permite crear escenarios y personajes relativamente complejos en poco tiempo. Los personajes serán definidos con colores oscuros y fríos. 
+
 ![image](https://user-images.githubusercontent.com/69243718/138848062-0156c042-5f8e-44b1-a7c4-969f37b46e45.png)
 ![image](https://user-images.githubusercontent.com/69243718/138848076-a0443927-0891-40a4-bd60-2bef19bb8f18.png)
 
@@ -215,12 +218,14 @@ En esta sección se especifican con detalle cada una de las pantallas que compon
 ## 3.1	Diagrama de flujo
 
 El siguiente diagrama de estados muestra las pantallas presentes a lo largo de Project G.H.O.S.T. y las transiciones entre ellas.
+
 ![image](https://user-images.githubusercontent.com/69243718/138848117-b849df35-ea61-4563-9964-94919b43c721.png)
 
 
 ## 3.2	Menú principal
 
 Se presenta aquí el boceto de la pantalla de Menú Principal:
+
 ![image](https://user-images.githubusercontent.com/69243718/138848140-79483ad1-97b1-4ad4-8c79-afbca414c182.png)
 
 Lista y descripción de todos sus componentes: 
@@ -238,6 +243,7 @@ Lista y descripción de todos sus componentes: 
 ## 3.3	Créditos
 
 A continuación, el boceto de la pantalla de Créditos:
+
 ![image](https://user-images.githubusercontent.com/69243718/138848166-3c30f923-b4db-49c5-935a-62eab2d60853.png)
 
 Lista y descripción de todos sus componentes:
@@ -252,6 +258,7 @@ Lista y descripción de todos sus componentes:
 ## 3.4	Selección de perfil
 
 Se muestra ahora el boceto de la pantalla de Selección de Perfil:
+
 ![image](https://user-images.githubusercontent.com/69243718/138848183-ca9a201a-6d26-4a3b-9ccc-101245ab27da.png)
 
 
@@ -269,6 +276,7 @@ Lista y descripción de todos sus componentes:
 ## 3.5	Pantalla de juego
 
 Boceto básico de la pantalla de Juego:
+
 ![image](https://user-images.githubusercontent.com/69243718/138848215-f37155f2-4fd3-45ac-b095-0626a75261fb.png)
 ![image](https://user-images.githubusercontent.com/69243718/138848223-ecb9bcd4-1031-43dc-8610-9d4135b05afa.png)
 
@@ -283,6 +291,7 @@ Lista y descripción de todos sus componentes:
 ## 3.6	Pantalla de opciones
 
 Se dispone a continuación el boceto de la pantalla de Selección de Perfil:
+
 ![image](https://user-images.githubusercontent.com/69243718/138848245-000f5f2d-20a5-4638-b821-3bf192582f8b.png)
 
 
@@ -314,6 +323,7 @@ Las imágenes incorporadas en el videojuego deberán mantener el formato .png
 ## 4.2	Pixel Art o dibujo (pendiente)
 
 Para el diseño de personajes se va a seguir un estilo pixel art similar a la obra de Cezary Lucznski <https://www.deviantart.com/luczynski>
+
 ![image](https://user-images.githubusercontent.com/69243718/138848271-1c40d17a-4b01-4852-b0c6-680725d287a4.png)
 
 
@@ -371,10 +381,12 @@ El mapa se divide en 4 grandes zonas:
 - **La primera planta, o planta baja**: En esta planta se encuentran el comedor, la recepción, la sala de espera, la sala de taquillas de los empleados, el baño de empleados y la cocina.
 
 - **El patio**: Es un patio con una fuente en el entro, que conecta la zona de recepción, la sala de empleados, el comedor y el edificio de administración (En el mapa referido como ‘mantenimiento’.
+-
 ![image](https://user-images.githubusercontent.com/69243718/138848350-4db48dd7-9e05-4f6a-8a98-91d1f2daa4cd.png)
 
 
 - **El subsuelo**: zona final del juego que se desbloquea a medida que los jugadores avancen en el juego.
+
 ![image](https://user-images.githubusercontent.com/69243718/138848371-238513e5-f263-45f4-86f3-2aec205fb555.png)
 
 
