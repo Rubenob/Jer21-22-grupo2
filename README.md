@@ -320,7 +320,7 @@ Project G.H.O.S.T. debe tener un carácter tétrico a la vez que lúgubre y mist
 
 ## 4.1	Artes 2D
 
-Las imágenes incorporadas en el videojuego deberán mantener el formato .png
+Project G.H.O.S.T. debe tener un carácter tétrico a la vez que lúgubre y misterioso. Para nuestros jóvenes protagonistas es todo un reto averiguar cómo han llegado allí y cómo van a conseguir escapar. Los colores deben ser fríos y apagados, los modelos muy básicos y la música acorde al suspense.
 
 ## 4.2	Pixel Art o dibujo (pendiente)
 
