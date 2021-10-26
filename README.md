@@ -322,7 +322,20 @@ Project G.H.O.S.T. debe tener un carácter tétrico a la vez que lúgubre y mist
 
 Project G.H.O.S.T. debe tener un carácter tétrico a la vez que lúgubre y misterioso. Para nuestros jóvenes protagonistas es todo un reto averiguar cómo han llegado allí y cómo van a conseguir escapar. Los colores deben ser fríos y apagados, los modelos muy básicos y la música acorde al suspense.
 
-## 4.2	Pixel Art o dibujo (pendiente)
+## 4.1.1	Paletas de color
+
+Las imágenes incorporadas en el videojuego deberán mantener el formato .png
+
+En el diseño artístico se mantendrá una paleta de color para todo el proyecto, que no solo unificará todo el estilo visual del videojuego, sino que también dará mayor trasfondo a personajes y escenarios, y guiará al jugador a lo largo de la partida gracias a la simbología del color.
+
+Para los escenarios predominarán paletas de colores grises que gracias a su neutralidad permitirán enfocar mejor la atención del jugador en los personajes principales.
+
+
+El amarillo se reservará para momentos puntuales para hacer uso de su aspecto negativo relacionado a la depresión y al suicidio, que sumado al carácter frio y triste de los tonos azules permitirá dar pautas narrativas.
+
+Haciendo uso de tonos marrones en la vestimenta se consigue crear relación con la depresión y un mal psicológico. Por ello, el personaje principal humano llevará tonos marrones, azules y amarillos. Mientras que el fantasma llevará marrones, azules y morado(magia). Para llamar la atención del jugador reservaremos el amarillo y morado así de forma intuitiva cada jugador sabrá donde tiene que centrar su atención.
+
+## 4.1.2	Estilo artistico
 
 Para el diseño de personajes se va a seguir un estilo pixel art similar a la obra de Cezary Lucznski <https://www.deviantart.com/luczynski>
 
