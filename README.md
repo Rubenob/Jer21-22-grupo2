@@ -70,6 +70,10 @@ RUBÉN ORTEGA BERRUGUETE
 
 [4.1	Artes 2D](#_Toc86089993)
 
+[4.1.1 Paletas de color](#_Toc86089993)
+
+[4.1.2 Estilo artistico](#_Toc86089993)
+
 [4.2	Pixel Art o dibujo](#_Toc86089994)
 
 [4.3	Audio](#_Toc86089995)
