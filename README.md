@@ -1,4 +1,4 @@
-<div align=”center”>[  ![image](https://user-images.githubusercontent.com/69243718/138761826-db49e65e-29c3-48c5-ac74-3a8d510415dd.png)  
+<div align=”center”>[ ![image](https://user-images.githubusercontent.com/69243718/138761826-db49e65e-29c3-48c5-ac74-3a8d510415dd.png)]</div>
 # Game Design Document
 ## Fase 1 Juegos en red
 Practica Juegos en red universidad Rey Juan Carlos 
@@ -412,4 +412,4 @@ La comunicación en red se manifestará de diversas maneras:
 
 - Cuando cualquiera de los dos jugadores interactúe con el entorno, esto se verá reflejado en la pantalla del compañero, dando lugar a diversos puzles y mecánicas. Por lo que habrá que actualizar ambas pantallas a la vez según vayan interactuando.
 
-- Se deberá implementar una **sala de espera** en la que los usuarios aguardarán hasta conectarse en parejas para poder iniciar la historia. ]</div>
+- Se deberá implementar una **sala de espera** en la que los usuarios aguardarán hasta conectarse en parejas para poder iniciar la historia.
