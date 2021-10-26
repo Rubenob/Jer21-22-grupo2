@@ -396,7 +396,7 @@ El mapa se divide en 4 grandes zonas:
 - **La primera planta, o planta baja**: En esta planta se encuentran el comedor, la recepción, la sala de espera, la sala de taquillas de los empleados, el baño de empleados y la cocina.
 
 - **El patio**: Es un patio con una fuente en el entro, que conecta la zona de recepción, la sala de empleados, el comedor y el edificio de administración (En el mapa referido como ‘mantenimiento’.
--
+
 ![image](https://user-images.githubusercontent.com/69243718/138848350-4db48dd7-9e05-4f6a-8a98-91d1f2daa4cd.png)
 
 
@@ -426,3 +426,13 @@ La comunicación en red se manifestará de diversas maneras:
 - Cuando cualquiera de los dos jugadores interactúe con el entorno, esto se verá reflejado en la pantalla del compañero, dando lugar a diversos puzles y mecánicas. Por lo que habrá que actualizar ambas pantallas a la vez según vayan interactuando.
 
 - Se deberá implementar una **sala de espera** en la que los usuarios aguardarán hasta conectarse en parejas para poder iniciar la historia.
+
+
+# **7**	**Referencias**
+- Ejemplo GDD: Fuente: https://github.com/dsaltares/siontower
+- Referencias para animaciones: Fuente: https://vsgif.com/gif/3132643
+- Referencias para la creación de los personajes: Fuente: https://www.inkoherence.com/pixel-art-juego-tronos/
+  Deviantart del artista Cezary Lucznski
+  https://www.deviantart.com/luczynski
+- Ejemplos sobre videojuegos de aventura-gráfica: Fuente: https://www.youtube.com/watch?v=QMmL4c2TrY4
+- Artículo sobre la teoría del color y paletas de referencia: Fuente: https://soydecine.com/significado-de-los-colores
