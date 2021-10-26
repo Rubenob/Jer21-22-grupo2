@@ -74,11 +74,11 @@ RUBÉN ORTEGA BERRUGUETE
 
 [4.3	Audio](#_Toc86089995)
 
-[5	DISEÑO DE NIVEL	 PAGEREF](#_Toc86089996)
+[5	Diseño de nivel](#_Toc86089996)
 
-[5.1	MAPA](#_Toc86089997)
+[5.1	Mapa](#_Toc86089997)
 
-[5.2	PUZZLES](#_Toc86089998)
+[5.2	Puzlles](#_Toc86089998)
 
 [6	Comunicación en red](#_Toc86089999)
 
