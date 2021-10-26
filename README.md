@@ -102,8 +102,7 @@ Project G.H.O.S.T. es un videojuego cooperativo donde cada jugador controla a un
 
 Project G.H.O.S.T beben de dos grandes géneros:
 
-- **Puzles**: es un género de videojuegos que se caracteriza por exigir agilidad mental al jugador para resolver enigmas por lo regular en una sola pantalla. Involucran problemas de lógica, matemáticas, estrategia, reconocimiento de patrones, completar palabras o hasta simple azar. En Project G.H.O.S.T los jugadores deben colaborar para resolver diversos puzles. 
-- 
+- **Puzles**: es un género de videojuegos que se caracteriza por exigir agilidad mental al jugador para resolver enigmas por lo regular en una sola pantalla. Involucran problemas de lógica, matemáticas, estrategia, reconocimiento de patrones, completar palabras o hasta simple azar. En Project G.H.O.S.T los jugadores deben colaborar para resolver diversos puzles.  
 ![image](https://user-images.githubusercontent.com/69243718/138847810-9c528df4-c128-4529-a443-34ab29b19c0b.png)
 ![image](https://user-images.githubusercontent.com/69243718/138847827-cc10a32d-ed8d-41a1-a684-5f34fdd99d83.png)
 
