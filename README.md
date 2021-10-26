@@ -6,6 +6,8 @@ Practica Juegos en red universidad Rey Juan Carlos
 
 INFERNO GAMES – EQUIPO 2
 
+![image](https://user-images.githubusercontent.com/69243718/138953396-7a81c1be-341e-46bc-a63b-c471d1c31876.png)
+
 DANIEL CALDÉS GARCÍA
 
 MATEO HERNANDEZ GONZALEZ
