@@ -1,0 +1,239 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>G.H.O.S.T. PROYECT</title>
+
+<script type="text/javascript" src="js/phaser.js"></script>
+
+<script>
+var config = {
+    type: Phaser.AUTO,
+    width: 440,
+    height: 320,
+    backgroundColor: '#2d2d2d',
+    pixelArt: true,
+    parent: "game-container",
+    
+    physics: {
+        default: 'matter',
+        matter: {
+            gravity: { y: 0 },
+            debug: true
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+//var controls;
+
+var game = new Phaser.Game(config);
+
+//Parametros isometricos
+var data;
+var tilewidth;
+var tileheight;
+var tileWidthHalf;
+var tileHeightHalf;
+var numLayers;
+var mapwidth;
+var mapheight;
+var centerX;
+var centerY;
+
+var cursors;
+var tiles;
+var player;
+const speed = 0.05;
+
+function xIso(xO,yO){
+	var xI;
+	var txO = (xO - yO) * tileWidthHalf;
+	xI = centerX + txO;
+	return xI;
+}
+
+
+function yIso(xO,yO){
+	var yI;
+	var tyO = (xO + yO) * tileHeightHalf;
+	yI = centerY + tyO;
+	return yI;
+}
+
+function dIso(xO,yO,l){
+	var dI;
+	var tyO = (xO + yO) * tileHeightHalf;
+	dI = (centerY + tyO)+tileHeightHalf*l;
+	return dI+l;
+}
+
+function xOrt(xI,yI){
+	var xO,yO;
+
+	yO= (((-xI + centerX)/tileWidthHalf) + ((yI-centerY)/tileHeightHalf))/2;
+	xO= (xI - centerX + (yO*tileWidthHalf))/tileWidthHalf;
+	return xO;
+}
+function yOrt(xI,yI){
+	var yO;
+
+	yO= (((-xI + centerX)/tileWidthHalf) + ((yI-centerY)/tileHeightHalf))/2;
+	return yO;
+}
+
+
+
+function preload ()
+{
+	//map
+	this.load.spritesheet('tiles', 'assets/tilemaps/tiles_Iso.png', { frameWidth: 32, frameHeight: 16 });
+	this.load.json('map', 'assets/tilemaps/map.json');
+
+	//player
+	this.load.spritesheet('player', 'assets/player_idel.png', { frameWidth: 32, frameHeight: 82 });
+	this.load.json('shapes', 'assets/player.json');
+}
+
+function create ()
+{
+	//  Input Events
+    cursors = this.input.keyboard.createCursorKeys();
+
+    this.anims.create({
+        key: 'idel',
+        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 9 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+
+
+	//  Parse the data out of the map
+        
+        var layer;
+        var tile;
+        var cat1 = this.matter.world.nextCategory();
+
+        //Información del mapa 
+		data = this.cache.json.get('map');
+        tilewidth = data.tilewidth;
+		tileheight = data.tileheight;
+		tileWidthHalf = tilewidth / 2;
+		tileHeightHalf = tileheight / 2;
+		numLayers = data.layers.length;
+
+		//Los tamaños de todas las capas del mapa tienen que ser iguales
+		mapwidth = data.layers[0].width;
+		mapheight = data.layers[0].height;
+
+		centerX = mapwidth * tileWidthHalf;
+		centerY = mapheight * tileHeightHalf;
+		
+
+        for(var l = 0; l<numLayers; l++){
+
+        	layer = data.layers[l].data;
+        	
+	        let i = 0;
+	        for (let y = 0; y < mapheight; y++)
+	        {
+	            for (let x = 0; x < mapwidth; x++)
+	            {
+	                const id = layer[i] - 1;
+	                if(id != -1){
+
+	                	tile = this.matter.add.image(xIso(x,y), yIso(x,y), 'tiles', id, {
+	                		isStatic: true,
+	                		vertices:[{"x":0,"y":0}, 
+	                                  {"x":15,"y":7}, 
+	                                  {"x":30,"y":0}, 
+	                                  {"x":15,"y":-7}],
+	                	})
+	                	if(l < 2 ){
+	                		if(id == 6 || id == 3){
+	                		tile.setCollisionCategory(cat1);
+	                		}
+	                	}
+	                	
+	                	if(x == 8 && y ==9){
+	                		tile.setStatic(false);
+	                		tile.name = "LAPIEDRA";
+	                	}
+
+	                tile.depth = dIso(x,y,l);
+	                }
+
+	                i++;
+
+	            }
+	        }
+        }
+        
+
+        var shapes = this.cache.json.get('shapes');
+        //Coordenadas en ortogonal iniciales
+        var player_x = 6;
+        var player_y = 8;
+        var player_l = 1; 
+
+		player = this.matter.add.sprite(xIso(player_x,player_y), yIso(player_x,player_y), 'player', 0,{shape: shapes.player});
+
+        player.setStatic(false);
+        player.setFriction(0);
+        player.setCollisionCategory(cat1);
+        player.setCollidesWith(cat1);
+        player.name = "ELPEPE";
+
+        this.matter.world.on('collisionstart', function (event) {
+        	event.pairs[0].bodyA.gameObject.setTint(0x000000);
+
+        	//console.log("name: " + event.pairs[0].bodyA.gameObject.name);
+        	//console.log("name: " + event.pairs[0].bodyB.gameObject.name);
+
+    	});
+}
+
+
+
+
+function update (time, delta)
+{
+	player.depth = dIso(xOrt(player.x,player.y),yOrt(player.x,player.y),1);;
+    if (cursors.left.isDown)
+    {	
+        player.x = xIso(xOrt(player.x,player.y)- speed, yOrt(player.x,player.y)); 
+        player.y = yIso(xOrt(player.x,player.y)- speed, yOrt(player.x,player.y));
+        //player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.x = xIso(xOrt(player.x,player.y)+ speed, yOrt(player.x,player.y)); 
+        player.y = yIso(xOrt(player.x,player.y)+ speed, yOrt(player.x,player.y));
+        //player.anims.play('right', true);
+    }
+    else if (cursors.up.isDown)
+    {
+        player.x = xIso(xOrt(player.x,player.y), yOrt(player.x,player.y)- speed); 
+        player.y = yIso(xOrt(player.x,player.y), yOrt(player.x,player.y)- speed);
+        //player.anims.play('turn');
+    }
+
+    else if (cursors.down.isDown)
+    {
+        player.x = xIso(xOrt(player.x,player.y), yOrt(player.x,player.y)+ speed); 
+        player.y = yIso(xOrt(player.x,player.y), yOrt(player.x,player.y)+ speed);
+    }else{
+    	player.anims.play('idel', true);
+    }
+
+    
+
+}
+</script>
+
+
+
+</body></html>
