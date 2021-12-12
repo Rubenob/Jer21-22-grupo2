@@ -442,8 +442,9 @@ La comunicación en red se manifestará de diversas maneras:
 
 # **7. Diagrama de flujo**
 
-Empezamos en la pantalla principal, de la cual podemos ir a la pantalla de juego o a la pantalla de creditos. De la pantalla de creditos se puede volver a la principal y de la de juego a la principal tambien. También encontramos un boton de tutorial que nos lleva a la pantalla de tutorial donde veremos como interactuar con el juego. 
+Empezamos en la pantalla principal, de la cual podemos ir a la pantalla de juego o a la pantalla de creditos. De la pantalla de creditos se puede volver a la principal y de la de juego a la principal tambien. Una vez demos al boton del play pasaremos al tutorial.
 
+![image](https://user-images.githubusercontent.com/69243718/145733919-4fce37db-c899-4d42-ba3a-12c917eec4ea.png)
 
 # **8. Capturas de pantalla**
 
@@ -470,6 +471,11 @@ Pantalla de juego:
 
 ![image](https://user-images.githubusercontent.com/69243718/145733740-ae32a743-4932-4371-96d6-0be8ccf0b202.png)
 
+Objetos y personajes de la historia:
+
+![image](https://user-images.githubusercontent.com/69243718/145733964-9a2f841c-23dc-40a7-b82f-a412ea8fbbe8.png)
+
+![image](https://user-images.githubusercontent.com/69243718/145733972-8aa9c531-ef38-41df-aadd-3b7483602753.png)
 
 # **9**	**Referencias**
 - Ejemplo GDD: Fuente: https://github.com/dsaltares/siontower
