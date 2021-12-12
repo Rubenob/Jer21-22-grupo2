@@ -442,7 +442,33 @@ La comunicación en red se manifestará de diversas maneras:
 
 # **7. Diagrama de flujo**
 
+Empezamos en la pantalla principal, de la cual podemos ir a la pantalla de juego o a la pantalla de creditos. De la pantalla de creditos se puede volver a la principal y de la de juego a la principal tambien. También encontramos un boton de tutorial que nos lleva a la pantalla de tutorial donde veremos como interactuar con el juego. 
+
+
 # **8. Capturas de pantalla**
+
+Pantalla principal:
+Fonndo de pantalla de un hospital pixelart, boton para jugar y otro para ir a la pantalla de creditos.
+
+![image](https://user-images.githubusercontent.com/69243718/145733726-a5def29f-1a8f-4c55-a365-e9f0aff4e577.png)
+
+Pantalla de creditos:
+Información sobre los creadores del videojuego y un botón de vuelta atras. 
+
+![image](https://user-images.githubusercontent.com/69243718/145733736-0ec394e7-a98f-4590-89ec-15b550c7c334.png)
+
+Tutorial:
+Movimiento, inventario y colisiones. 
+
+![image](https://user-images.githubusercontent.com/69243718/145733682-f7ae1176-24ff-47c4-8780-b9a9dcfc2354.png)
+
+![image](https://user-images.githubusercontent.com/69243718/145733694-eaa323ac-318e-46c8-86a4-5c2af77d4166.png)
+
+![image](https://user-images.githubusercontent.com/69243718/145733700-da36251c-722d-4aa1-bd22-338bc7b05a04.png)
+
+Pantalla de juego:
+
+![image](https://user-images.githubusercontent.com/69243718/145733740-ae32a743-4932-4371-96d6-0be8ccf0b202.png)
 
 
 # **9**	**Referencias**
