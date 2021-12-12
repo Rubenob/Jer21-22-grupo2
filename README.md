@@ -86,6 +86,10 @@ RUBÉN ORTEGA BERRUGUETE
 
 [6	Comunicación en red](#_Toc86089999)
 
+[7	Diagrama de flujo](#_Toc86089999)
+
+[8	Capturas de pantalla](#_Toc86089999)
+
 # **1. Introducción**
 
 En este documento se tratará el contenido del diseño y desarrollo del videojuego Project G.H.O.S.T, mediante el cual se busca presentar los principales elementos que caracterizan al videojuego, desde el apartado de diseño, sus características técnicas en cuanto a comunicación red, como el apartado gráfico, arte y música.
@@ -436,8 +440,12 @@ La comunicación en red se manifestará de diversas maneras:
 
 - Se deberá implementar una **sala de espera** en la que los usuarios aguardarán hasta conectarse en parejas para poder iniciar la historia.
 
+# **7. Diagrama de flujo**
 
-# **7**	**Referencias**
+# **8. Capturas de pantalla**
+
+
+# **9**	**Referencias**
 - Ejemplo GDD: Fuente: https://github.com/dsaltares/siontower
 - Referencias para animaciones: Fuente: https://vsgif.com/gif/3132643
 - Referencias para la creación de los personajes: Fuente: https://www.inkoherence.com/pixel-art-juego-tronos/
