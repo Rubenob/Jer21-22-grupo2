@@ -1,0 +1,126 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>G.H.O.S.T. PROYECT</title>
+
+<script type="text/javascript" src="js/phaser.js"></script>
+
+
+
+    <script>
+var config = {
+    type: Phaser.AUTO,
+    width: 440,
+    height: 320,
+    backgroundColor: '#2d2d2d',
+    pixelArt: true,
+    parent: "game-container",
+    
+    physics: {
+        default: 'matter',
+        matter: {
+            gravity: { y: 0.01 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+//var controls;
+
+var game = new Phaser.Game(config);
+
+var tiles;
+var player;
+
+function preload ()
+{
+	this.load.spritesheet('tiles', 'assets/tilemaps/tiles_Iso.png', { frameWidth: 32, frameHeight: 16 });
+	this.load.image('player', 'assets/player.png');
+	this.load.json('map', 'assets/tilemaps/map.json');
+}
+
+function create ()
+{
+	//  Parse the data out of the map
+        const data = this.cache.json.get('map');
+
+        const tilewidth = data.tilewidth;
+        const tileheight = data.tileheight;
+
+        tileWidthHalf = tilewidth / 2;
+        tileHeightHalf = tileheight / 2;
+
+        const numLayers = 5;
+        var layer;
+
+        for(var j = 0; j<numLayers; j++){
+
+        	layer = data.layers[j].data;
+	        const mapwidth = data.layers[j].width;
+	        const mapheight = data.layers[j].height;
+
+	        const centerX = mapwidth * tileWidthHalf;
+	        const centerY = 16;
+
+	        let i = 0;
+			var tile;
+
+	        for (let y = 0; y < mapheight; y++)
+	        {
+	            for (let x = 0; x < mapwidth; x++)
+	            {
+	                const id = layer[i] - 1;
+
+	                const tx = (x - y) * tileWidthHalf;
+	                const ty = (x + y) * tileHeightHalf;
+	                
+	                if(id == 6){
+	                	tile = this.matter.add.image(centerX + tx, centerY + ty, 'tiles', id, {
+	                		isStatic: true,
+	                		vertices:[{"x":0,"y":0}, 
+	                                  {"x":15,"y":7}, 
+	                                  {"x":30,"y":0}, 
+	                                  {"x":15,"y":-7}],
+	                	})
+	                }
+	                else{
+	                	tile = this.matter.add.image(centerX + tx, centerY + ty, 'tiles', id, {
+	                		isStatic: true,
+	                		vertices:[{"x":0,"y":0}, 
+	                                  {"x":15,"y":7}, 
+	                                  {"x":30,"y":0}, 
+	                                  {"x":15,"y":-7}],
+	                	})
+	                }	
+
+	                tile.depth = (centerY + ty)+(j*tileHeightHalf);
+	                console.log(tile);
+	                i++;
+	            }
+	        }
+        }
+        
+
+
+        player = this.matter.add.image(100, 180, 'player', 50,
+        				{isStatic: true,
+        					isSensor: false,
+                		 });
+        player.depth = player.y+130;
+        console.log(player);
+}
+
+
+function update (time, delta)
+{
+   //player.x = player.x + 1; 
+}
+</script>
+
+
+
+</body></html>
