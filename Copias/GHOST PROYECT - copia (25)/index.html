@@ -1,0 +1,945 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>G.H.O.S.T. PROYECT</title>
+
+<script type="text/javascript" src="js/phaser.js"></script>
+
+<script>
+var config = {
+    type: Phaser.AUTO,
+    width: 880,
+    height: 320,
+    backgroundColor: '#2d2d2d',
+    pixelArt: true,
+    parent: "game-container",
+    
+    physics: {
+        default: 'matter',
+        matter: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+//var controls;
+
+var game = new Phaser.Game(config);
+
+//Parametros isometricos
+var data;
+var tilewidth;
+var tileheight;
+var tileWidthHalf;
+var tileHeightHalf;
+var numLayers;
+var mapwidth;
+var mapheight;
+var centerX;
+var centerY;
+var matter;
+var scene;
+var cam3;
+var textListH = [];
+var textListF = [];
+var objetosMapa = new Set();
+
+var player_h,player_f;
+let keyA,keyS,keyD,keyW;
+let keyI,keyJ,keyK,keyL;
+var text_cTh, text_cTf;
+
+var cursors;
+var tiles;
+var cat1,	//Mapa
+	cat2,	//Humano y mapa
+	cat3,	//Fantasma y mapa
+	cat4,	//Ambos y mapa
+	cat5,	//Humano
+	cat6,	//Fantasma
+	cat7;	//Ambos
+
+var inventarioH = new Set([]);;
+var inventario1H = new Set([]);
+var inventarioF = new Set([]);;
+var inventario1F = new Set([]);
+var indexInventarioH = 0;
+var indexInventarioF = 0;
+const speed = 0.13;
+
+function xIso(xO,yO){
+	var xI;
+	var txO = (xO - yO) * tileWidthHalf;
+	xI = centerX + txO;
+	return xI;
+}
+
+
+function yIso(xO,yO){
+	var yI;
+	var tyO = (xO + yO) * tileHeightHalf;
+	yI = centerY + tyO;
+	return yI;
+}
+
+function dIso(xO,yO,l){
+	var dI;
+	var tyO = (xO + yO) * tileHeightHalf;
+	dI = (centerY + tyO)+tileHeightHalf*l;
+	return dI+l;
+}
+
+function xOrt(xI,yI){
+	var xO,yO;
+
+	yO= (((-xI + centerX)/tileWidthHalf) + ((yI-centerY)/tileHeightHalf))/2;
+	xO= (xI - centerX + (yO*tileWidthHalf))/tileWidthHalf;
+	return xO;
+}
+function yOrt(xI,yI){
+	var yO;
+
+	yO= (((-xI + centerX)/tileWidthHalf) + ((yI-centerY)/tileHeightHalf))/2;
+	return yO;
+}
+
+
+
+function preload ()
+{	
+	var directorio = "";
+	//map
+	this.load.spritesheet('tiles', directorio +'assets/tilemaps/tiles_Iso.png', { frameWidth: 32, frameHeight: 16 });
+	this.load.json('map', directorio + 'assets/tilemaps/map.json');
+
+	//imagenes objetos
+	this.load.image('llave', directorio +'assets/image/llave.png');
+	this.load.image('diario', directorio +'assets/image/diario.png');
+
+	//player_h
+	this.load.spritesheet('player_h', directorio +'assets/spritesheets/player_h/player_h_idel.png', { frameWidth: 32, frameHeight: 82 });
+	this.load.json('shapes_player_h', directorio +'assets/spritesheets/player_h/player_h.json');
+
+	//player_f
+	this.load.spritesheet('player_f', directorio +'assets/spritesheets/player_f/player_f_idel.png', { frameWidth: 32, frameHeight: 57 });
+	this.load.json('shapes_player_f', directorio +'assets/spritesheets/player_f/player_f.json');
+
+	//inventarios
+	this.load.image('inventario_h',directorio +'assets/image/inventario_h.png');
+	this.load.image('inventario_f',directorio +'assets/image/inventario_f.png');
+
+	//Cuadro texto
+	this.load.image('cuadro_texto',directorio +'assets/image/texto.png');
+
+}
+
+function create ()
+{
+	//  Input Events
+    cursors = this.input.keyboard.createCursorKeys();
+
+    //Animaciones
+    this.anims.create({
+        key: 'idel_player_h',
+        frames: this.anims.generateFrameNumbers('player_h', { start: 0, end: 9 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'idel_player_f',
+        frames: this.anims.generateFrameNumbers('player_f', { start: 0, end: 8 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+
+
+	//  Parse the data out of the map
+        
+    var layer;
+    var tile;
+    matter = this.matter;
+    scene = this;
+    cat1 = this.matter.world.nextCategory();
+    cat2 = this.matter.world.nextCategory();
+    cat3 = this.matter.world.nextCategory();
+    cat4 = this.matter.world.nextCategory();
+    cat5 = this.matter.world.nextCategory();
+    cat6 = this.matter.world.nextCategory();
+    cat7 = this.matter.world.nextCategory();
+
+    //Información del mapa 
+	data = this.cache.json.get('map');
+    tilewidth = data.tilewidth;
+	tileheight = data.tileheight;
+	tileWidthHalf = tilewidth / 2;
+	tileHeightHalf = tileheight / 2;
+	numTilesLayers = data.layers[0].layers.length;
+	numFolders = data.layers.length;
+
+	var posLayerActionsH = [];
+	var posLayerImageH = [];
+	var posLayerSpriteH = [];
+	var posLayerActionsF,posLayerImageF, posLayerSpriteF;
+	var posLayerActionsB,posLayerImageB, posLayerSpriteB;
+	
+	for(var j = 0; j < numFolders; j++){
+		numLayers = data.layers[j].layers.length;
+		for(var i = 0; i < numLayers; i++){
+			if(data.layers[j].layers[i].name == "actionsHumano"){
+				posLayerActionsH = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "actionsFantasma"){
+				posLayerActionsF = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createImageHumano"){
+				posLayerImageH = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createImageFantasma"){
+				posLayerImageF = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createSpritesHumano"){
+				posLayerSpriteH = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createSpritesFantasma"){
+				posLayerSpriteF = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "actionsBoth"){
+				posLayerActionsB = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createImageBoth"){
+				posLayerImageB = [j,i];
+			}
+			if(data.layers[j].layers[i].name == "createSpritesBoth"){
+				posLayerSpriteB = [j,i];
+			}
+		}
+	}
+
+	var actionsLayerH = data.layers[posLayerActionsH[0]].layers[posLayerActionsH[1]].objects;
+	var createImageLayerH = data.layers[posLayerImageH[0]].layers[posLayerImageH[1]].objects;
+	var createSpriteLayerH = data.layers[posLayerSpriteH[0]].layers[posLayerSpriteH[1]].objects;
+
+	var actionsLayerF = data.layers[posLayerActionsF[0]].layers[posLayerActionsF[1]].objects;
+	var createImageLayerF = data.layers[posLayerImageF[0]].layers[posLayerImageF[1]].objects;
+	var createSpriteLayerF = data.layers[posLayerSpriteF[0]].layers[posLayerSpriteF[1]].objects;
+	
+	var actionsLayerB = data.layers[posLayerActionsB[0]].layers[posLayerActionsB[1]].objects;
+	var createImageLayerB = data.layers[posLayerImageB[0]].layers[posLayerImageB[1]].objects;
+	var createSpriteLayerB = data.layers[posLayerSpriteB[0]].layers[posLayerSpriteB[1]].objects;
+
+	//Los tamaños de todas las capas del mapa tienen que ser iguales 
+	mapwidth = data.layers[0].layers[0].width;
+	mapheight = data.layers[0].layers[0].height;
+
+	centerX = mapwidth * tileWidthHalf;
+	centerY = mapheight * tileHeightHalf;
+		
+
+    for(var l = 0; l<numTilesLayers; l++){
+
+        layer = data.layers[0].layers[l].data;
+        	
+	    let i = 0;
+	    for (let y = 0; y < mapheight; y++)
+	    {
+	        for (let x = 0; x < mapwidth; x++)
+	        {
+	          	const id = layer[i] - 1;
+	            if(id != -1){
+	                tile = this.matter.add.image(xIso(x,y), yIso(x,y), 'tiles', id, {
+	                	isStatic: true,
+	                	vertices:[{"x":0,"y":0}, 
+	                                {"x":15,"y":7}, 
+	                                {"x":30,"y":0}, 
+	                                {"x":15,"y":-7}],
+	                	})
+	                if(l < 2 ){
+	                	if(id == 6 || id == 3){
+	                		tile.setCollisionCategory(cat1);
+	                	}
+	                }
+
+	                tile.setStatic(true);
+	                tile.name = "x=" + x+";y=" + y+ ";";
+
+	                //incluye acciones Humano
+	                for (o = 0; o < actionsLayerH.length; o++){
+	                	if(x == Math.round(actionsLayerH[o].x / 16)){
+	                		if(y == Math.round(actionsLayerH[o].y / 16)){
+	                			tile.setStatic(true);
+	                			tile.name =  actionsLayerH[o].name+ 'categoria=5;';
+	                			tile.setCollisionCategory(cat5);
+	                				
+	                		}
+	                	}
+	                }
+
+	                //incluye acciones Fantasma 
+	                for (o = 0; o < actionsLayerF.length; o++){
+	                	if(x == Math.round(actionsLayerF[o].x / 16)){
+	                		if(y == Math.round(actionsLayerF[o].y / 16)){
+	                			tile.setStatic(true);
+	                			tile.name =  actionsLayerF[o].name + 'categoria=6;';
+	                			tile.setCollisionCategory(cat6);
+	                		}
+	                	}
+	                }
+
+	                //incluye acciones Ambos 
+	                for (o = 0; o < actionsLayerB.length; o++){
+	                	if(x == Math.round(actionsLayerB[o].x / 16)){
+	                		if(y == Math.round(actionsLayerB[o].y / 16)){
+	                			tile.setStatic(true);
+	                			tile.name =  actionsLayerB[o].name + 'categoria=7;';
+	                			tile.setCollisionCategory(cat7);
+	                				
+	                		}
+	                	}
+	                }
+
+	            tile.depth = dIso(x,y,l);
+	            }
+
+	            i++;
+
+	        }
+	    }
+    }
+    
+    //Humano
+    //crear imagenes
+    for (o = 0; o < createImageLayerH.length; o++){
+	    var object_x = Math.round(createImageLayerH[o].x / 16);
+	    var object_y = Math.round(createImageLayerH[o].y / 16);
+	    var cad = createImageLayerH[o].name + 'categoria=2;';
+	    createImagen(cad,object_x,object_y,2);
+
+	}
+	//crear sprites
+	for (o = 0; o < createSpriteLayerH.length; o++){
+	    var object_x = Math.round(createSpriteLayerH[o].x / 16);
+	    var object_y = Math.round(createSpriteLayerH[o].y / 16);
+	    var cad = createSpriteLayerH[o].name + 'categoria=2;';
+	    createSprite(cad,object_x,object_y,2);
+	}
+
+	//Fantasma
+	//crear imagenes
+    for (o = 0; o < createImageLayerF.length; o++){
+	    var object_x = Math.round(createImageLayerF[o].x / 16);
+	    var object_y = Math.round(createImageLayerF[o].y / 16);
+	    var cad = createImageLayerF[o].name + 'categoria=3;';
+	    createImagen(cad,object_x,object_y,3);
+
+	}
+	//crear sprites
+	for (o = 0; o < createSpriteLayerF.length; o++){
+	    var object_x = Math.round(createSpriteLayerF[o].x / 16);
+	    var object_y = Math.round(createSpriteLayerF[o].y / 16);
+	    var cad = createSpriteLayerF[o].name + 'categoria=3;';
+	    createSprite(cad,object_x,object_y,3);
+	}
+
+	//Ambos
+	//crear imagenes
+    for (o = 0; o < createImageLayerB.length; o++){
+	    var object_x = Math.round(createImageLayerB[o].x / 16);
+	    var object_y = Math.round(createImageLayerB[o].y / 16);
+	    var cad = createImageLayerB[o].name + 'categoria=4;';
+	    createImagen(cad,object_x,object_y,4);
+
+	}
+	//crear sprites
+	for (o = 0; o < createSpriteLayerB.length; o++){
+	    var object_x = Math.round(createSpriteLayerB[o].x / 16);
+	    var object_y = Math.round(createSpriteLayerB[o].y / 16);
+	    var cad = createSpriteLayerB[o].name + 'categoria=4;';
+	    createSprite(cad.name,object_x,object_y,4);
+	}
+
+    //Inventario Humano
+    var inventarioSquare = this.matter.add.sprite(0, 0, 'inventario_h', 0,{isStatic: true}).setOrigin(0,0);
+    var inventarioSquare = this.matter.add.sprite(440, 0, 'inventario_f', 0,{isStatic: true}).setOrigin(0,0);
+
+    //Camara
+    //Camara humano
+    this.cameras.main.setSize(440, 320);
+    this.cameras.main.startFollow(player_h);
+        
+    //Camara fantasma
+    const cam2 = this.cameras.add(440, 0, 440, 320);
+    cam2.startFollow(player_f, false, 0.5, 0.5);
+
+	//Camara inventario humano
+	cam3 = this.cameras.add(0,320, 440, 320);
+	cam3.setViewport(0, 0, 440, 320);	//Donde queremos que salga la camara en el navegador y el tamaño del viewport
+	cam3.setAlpha(0.85);
+	cam3.visible = false;
+	//cam3.centerOn(text.x, text.y); //En punto del escenario donde esta centrado el objetivo de la cámara
+
+	//Camara inventario fantasma
+	cam4 = this.cameras.add(440,0, 440, 320);
+	cam4.setViewport(440, 0, 440, 320);	//Donde queremos que salga la camara en el navegador y el tamaño del viewport
+	cam4.centerOn(660, 160); //En punto del escenario donde esta centrado el objetivo de la cámara
+	cam4.setAlpha(0.85);
+	cam4.visible = false;
+
+	//Cuadro de Texto
+    
+    var cText_h = this.matter.add.image(0, 281, 'cuadro_texto', 0,{isStatic: true}).setOrigin(0,0);
+    text_cTh = scene.add.text(7, 281, "",{ fontSize: '12px',fill:'#000', fontStyle: 'bold' });
+    text_cTh.setWordWrapWidth(430,true);
+
+    var cText_f = this.matter.add.image(440, 281, 'cuadro_texto', 0,{isStatic: true}).setOrigin(0,0);
+    text_cTf = scene.add.text(447, 281, "",{ fontSize: '12px',fill:'#000', fontStyle: 'bold' });
+    text_cTf.setWordWrapWidth(430,true);
+    //printTextH("Hola buenos dias");
+    //printTextF("Hola buenos noches");
+
+
+	function colisionHumano(humano,objectoAuxiliar){
+		if(!(obtenerValorEtiqueta(humano.name,'nombre') === 'fantasma')){
+			
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoH');
+			if(!(texto == "")){
+				printTextH(texto);
+			}
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoF');
+			if(!(texto == "")){
+				printTextF(texto);
+			}
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoB');
+			if(!(texto == "")){
+				printTextH(texto);
+				printTextF(texto);
+			}
+			
+			var accion = obtenerValorEtiqueta(objectoAuxiliar.name,'accion');
+			if(accion == "tp"){
+				
+				var coordenadasX = parseFloat (obtenerValorEtiqueta(objectoAuxiliar.name,'x'));
+				var coordenadasY = parseFloat (obtenerValorEtiqueta(objectoAuxiliar.name,'y'));
+
+				var condicionString = obtenerValorEtiqueta(objectoAuxiliar.name,'condicion');
+				
+				if(condicionString == ""){
+					player_h.x = xIso(coordenadasX,coordenadasY);
+				    player_h.y = yIso(coordenadasX,coordenadasY);
+				}else{
+				    var condicionArray =  JSON.parse(condicionString);
+				    var condicionConjunto = new Set (condicionArray);
+				        		
+				    var interseccion = new Set ([...inventario1H].filter(x => condicionConjunto.has(x)));
+
+				    if(interseccion.size == condicionConjunto.size){
+				        player_h.x = xIso(coordenadasX,coordenadasY);
+				        player_h.y = yIso(coordenadasX,coordenadasY);
+				    }
+				}
+				
+			}
+			if(accion == "coger"){
+			    inventarioH.add(objectoAuxiliar.name);
+			    objetosMapa.forEach (function(value) {
+				    if(value.name == objectoAuxiliar.name){
+					    objetosMapa.delete(value);
+				    }
+				});
+				objectoAuxiliar.destroy();
+			
+				var inventarioArray;
+				inventarioH.forEach (function(value) {
+				    inventarioArray =  obtenerValorEtiqueta(objectoAuxiliar.name,'nombre');
+					inventario1H.add(inventarioArray);
+				});
+				selectItemH(0,0,inventario1H,indexInventarioH,scene);
+			}
+
+			if(accion == "drooperI"){
+				var caracteristicas = objectoAuxiliar.name;
+				
+				objetosMapa.forEach (function(value) {
+				    if(value.name == objectoAuxiliar.name){
+					    objetosMapa.delete(value);
+				    }
+				});
+				objectoAuxiliar.destroy(); 
+				
+				var droopAccion = obtenerValorEtiqueta(caracteristicas,'droopAccion');
+				var droopSprite = obtenerValorEtiqueta(caracteristicas,'droopSprite');
+				var droopName = obtenerValorEtiqueta(caracteristicas,'droopName');
+				var droopX = obtenerValorEtiqueta(caracteristicas,'droopX');
+				var droopY = obtenerValorEtiqueta(caracteristicas,'droopY');
+				var droopCategoria = obtenerValorEtiqueta(caracteristicas,'droopCategoria');
+				var droopCondicion = obtenerValorEtiqueta(caracteristicas,'droopCondicion');
+				var droopTextoH = obtenerValorEtiqueta(caracteristicas,'droopTextoH');
+				var droopTextoF = obtenerValorEtiqueta(caracteristicas,'droopTextoF');
+				var droopTextoB = obtenerValorEtiqueta(caracteristicas,'droopTextoB');
+				
+				cadena = 'accion='+ droopAccion +';sprite='+ droopSprite + ';nombre='+ droopName +";x=" + droopX +";y=" + droopY + ";categoria=" + droopCategoria + ';condicion=' + droopCondicion +';textoH=' + droopTextoH +';textoF='+ droopTextoF +';textoB='+ droopTextoB +';';
+
+				console.log(cadena);
+				var coordenadaX = parseFloat (obtenerValorEtiqueta(cadena,'x'));
+				var coordenadaY = parseFloat (obtenerValorEtiqueta(cadena,'y'));
+				createImagen(cadena,coordenadaX,coordenadaY);
+			}
+		}
+		
+	}
+	function colisionFantasma(fantasma,objectoAuxiliar){
+		if(!(obtenerValorEtiqueta(fantasma.name,'nombre') === 'humano')){
+			
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoH');
+			if(!(texto == "")){
+				printTextH(texto);
+			}
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoF');
+			if(!(texto == "")){
+				printTextF(texto);
+			}
+			var texto = obtenerValorEtiqueta(objectoAuxiliar.name,'textoB');
+			if(!(texto == "")){
+				printTextH(texto);
+				printTextF(texto);
+			}
+
+			var accion =  obtenerValorEtiqueta(objectoAuxiliar.name,'accion');
+			if(accion == "tp"){
+
+				var coordenadasX = parseFloat (obtenerValorEtiqueta(objectoAuxiliar.name,'x'));
+				var coordenadasY = parseFloat (obtenerValorEtiqueta(objectoAuxiliar.name,'y'));
+
+				var condicionString = obtenerValorEtiqueta(objectoAuxiliar.name,'condicion');
+				
+				if(condicionString == ""){
+					player_f.x = xIso(coordenadasX,coordenadasY);
+				    player_f.y = yIso(coordenadasX,coordenadasY);
+				}else{
+				    var condicionArray =  JSON.parse(condicionString);
+				    var condicionConjunto = new Set (condicionArray);
+				        		
+				    var interseccion = new Set ([...inventario1H].filter(x => condicionConjunto.has(x)));
+
+				    if(interseccion.size == condicionConjunto.size){
+				        player_f.x = xIso(coordenadasX,coordenadasY);
+				        player_f.y = yIso(coordenadasX,coordenadasY);
+				    }
+				}
+			}
+			if(accion == "coger"){
+			    inventarioF.add(objectoAuxiliar.name);
+			    objetosMapa.forEach (function(value) {
+				    if(value.name == objectoAuxiliar.name){
+					    objetosMapa.delete(value);
+				    }
+				});
+				objectoAuxiliar.destroy();
+			
+				var inventarioArray;
+				inventarioF.forEach (function(value) {
+				    inventarioArray =  obtenerValorEtiqueta(objectoAuxiliar.name,'nombre');
+					inventario1F.add(inventarioArray);
+				});
+				selectItemF(440,0,inventario1F,indexInventarioF,scene);
+			}
+			if(accion == "drooperI"){
+				var caracteristicas = objectoAuxiliar.name;
+				
+				objetosMapa.forEach (function(value) {
+				    if(value.name == objectoAuxiliar.name){
+					    objetosMapa.delete(value);
+				    }
+				});
+				objectoAuxiliar.destroy(); 
+				
+				var droopAccion = obtenerValorEtiqueta(caracteristicas,'droopAccion');
+				var droopSprite = obtenerValorEtiqueta(caracteristicas,'droopSprite');
+				var droopName = obtenerValorEtiqueta(caracteristicas,'droopName');
+				var droopX = obtenerValorEtiqueta(caracteristicas,'droopX');
+				var droopY = obtenerValorEtiqueta(caracteristicas,'droopY');
+				var droopCategoria = obtenerValorEtiqueta(caracteristicas,'droopCategoria');
+				var droopCondicion = obtenerValorEtiqueta(caracteristicas,'droopCondicion');
+				var droopTextoH = obtenerValorEtiqueta(caracteristicas,'droopTextoH');
+				var droopTextoF = obtenerValorEtiqueta(caracteristicas,'droopTextoF');
+				var droopTextoB = obtenerValorEtiqueta(caracteristicas,'droopTextoB');
+				
+				cadena = 'accion='+ droopAccion +';sprite='+ droopSprite + ';nombre='+ droopName +";x=" + droopX +";y=" + droopY + ";categoria=" + droopCategoria + ';condicion=' + droopCondicion +';textoH=' + droopTextoH +';textoF='+ droopTextoF +';textoB='+ droopTextoB +';';
+
+				console.log(cadena);
+				var coordenadaX = parseFloat (obtenerValorEtiqueta(cadena,'x'));
+				var coordenadaY = parseFloat (obtenerValorEtiqueta(cadena,'y'));
+				createImagen(cadena,coordenadaX,coordenadaY);
+			}
+		}	
+	}
+	function colisionObjetos(oC1,oC2){
+			
+	}
+
+	//Colisiones
+    this.matter.world.on('collisionstart', function (event) {
+	    var objetoA = event.pairs[0].bodyA.gameObject;
+	    var objetoB = event.pairs[0].bodyB.gameObject;
+	    if(obtenerValorEtiqueta(objetoA.name,'nombre') === 'humano'){
+	    	colisionHumano(objetoA,objetoB);
+	    }
+	    if(obtenerValorEtiqueta(objetoA.name,'nombre') === 'fantasma'){
+	    	colisionFantasma(objetoA,objetoB);
+	    }
+	    if(obtenerValorEtiqueta(objetoB.name,'nombre') === 'humano'){
+	    	colisionHumano(objetoB,objetoA);
+	    }
+	    if(obtenerValorEtiqueta(objetoB.name,'nombre') === 'fantasma'){
+	    	colisionFantasma(objetoB,objetoA);
+	    }
+    });
+
+
+   	//Teclado Humano
+
+   	//Sacar inventario Q
+	this.input.keyboard.on('keyup', function (event) {
+        if (event.keyCode === 113 || event.keyCode === 81)
+        {
+            var i = 0;
+            var inventarioArray;
+            inventarioH.forEach (function(value) {
+	        	if(i == indexInventarioH){
+		        	inventarioArray =  value;
+	        	}
+	        	i++;
+			});
+           	createImagen(inventarioArray,xOrt(player_h.x + 30,player_h.y),yOrt(player_h.x,player_h.y));
+            	inventarioH.delete(inventarioArray);
+            	inventario1H.delete(obtenerValorEtiqueta(inventarioArray,'nombre'));
+
+            indexInventarioH = 0; 
+
+            selectItemH(0,0,inventario1H,indexInventarioH,scene); 
+        }
+    });
+    // Bajar opción en inventario F
+    this.input.keyboard.on('keyup', function (event) {
+        if ((event.keyCode === 114 || event.keyCode === 82) && cam3.visible)
+        {	
+        	indexInventarioH++;
+        	if(indexInventarioH > inventario1H.size-1){
+            	indexInventarioH = 0;
+        	}
+        	selectItemH(0,0,inventario1H,indexInventarioH,scene);
+        }
+    });
+
+    // Subir opción en inventario R
+    this.input.keyboard.on('keyup', function (event) {
+        if ((event.keyCode === 102 || event.keyCode === 70) && cam3.visible)
+        {	
+        	indexInventarioH--;
+        	if(indexInventarioH < 0){
+            	indexInventarioH = inventario1H.size-1;
+        	}
+        	selectItemH(0,0,inventario1H,indexInventarioH,scene);
+        }
+    });
+    // Abrir/Cerrar inventario E
+	this.input.keyboard.on('keyup', function (event) {
+        if (event.keyCode === 101 || event.keyCode === 69)
+        {	
+            cam3.setVisible(!cam3.visible);
+        }
+    });
+
+	//Teclado fantasma
+
+	//Sacar inventario U
+	this.input.keyboard.on('keyup', function (event) {
+        if (event.keyCode === 117 || event.keyCode === 85)
+        {
+            var i = 0;
+            var inventarioArray;
+            inventarioF.forEach (function(value) {
+	        	if(i == indexInventarioF){
+		        	inventarioArray =  value;
+	        	}
+	        	i++;
+			});
+           	createImagen(inventarioArray,xOrt(player_f.x + 30,player_f.y),yOrt(player_f.x,player_f.y));
+            	inventarioF.delete(inventarioArray);
+            	inventario1F.delete(obtenerValorEtiqueta(inventarioArray,'nombre'));
+
+            indexInventarioF = 0; 
+
+            selectItemH(0,0,inventario1F,indexInventarioF,scene); 
+        }
+    });
+    // Bajar opción en inventario H
+    this.input.keyboard.on('keyup', function (event) {
+        if ((event.keyCode === 104 || event.keyCode === 72) && cam3.visible)
+        {	
+        	indexInventarioF++;
+        	if(indexInventarioF > inventario1F.size-1){
+            	indexInventarioF = 0;
+        	}
+        	selectItemF(440,0,inventario1F,indexInventarioF,scene);
+        }
+    });
+
+    // Subir opción en inventario Y
+    this.input.keyboard.on('keyup', function (event) {
+        if ((event.keyCode === 121 || event.keyCode === 89) && cam3.visible)
+        {	
+        	indexInventarioF--;
+        	if(indexInventarioF < 0){
+            	indexInventarioF = inventario1F.size-1;
+        	}
+        	selectItemF(440,0,inventario1F,indexInventarioF,scene);
+        }
+    });
+	// Abrir/Cerrar inventario E
+	this.input.keyboard.on('keyup', function (event) {
+        if (event.keyCode === 111 || event.keyCode === 79)
+        {	
+            cam4.setVisible(!cam4.visible);
+        }
+    });
+
+
+	keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+	keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+	keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+	keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+
+	keyI = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+	keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+	keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+	keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+
+}
+
+
+
+
+function update (time, delta)
+{
+	
+	objetosMapa.forEach (function(value) {
+	        	value.depth = dIso(xOrt(value.x,value.y),yOrt(value.x,value.y),2);
+			});
+	
+
+	player_h.depth = dIso(xOrt(player_h.x,player_h.y),yOrt(player_h.x,player_h.y),1);
+	player_f.depth = dIso(xOrt(player_f.x,player_f.y),yOrt(player_f.x,player_f.y),1);
+
+	//Teclas humano
+    if (keyA.isDown)
+    {	
+        player_h.x = xIso(xOrt(player_h.x,player_h.y)- speed, yOrt(player_h.x,player_h.y)); 
+        player_h.y = yIso(xOrt(player_h.x,player_h.y)- speed, yOrt(player_h.x,player_h.y));
+        //player.anims.play('left', true);
+    }
+    else if (keyD.isDown)
+    {
+        player_h.x = xIso(xOrt(player_h.x,player_h.y)+ speed, yOrt(player_h.x,player_h.y)); 
+        player_h.y = yIso(xOrt(player_h.x,player_h.y)+ speed, yOrt(player_h.x,player_h.y)); 
+        //player.anims.play('right', true);
+    }
+    else if (keyW.isDown)
+    {
+        player_h.x = xIso(xOrt(player_h.x,player_h.y), yOrt(player_h.x,player_h.y)- speed); 
+        player_h.y = yIso(xOrt(player_h.x,player_h.y), yOrt(player_h.x,player_h.y)- speed);
+        //player.anims.play('down');
+    }
+
+    else if (keyS.isDown)
+    {
+        player_h.x = xIso(xOrt(player_h.x,player_h.y), yOrt(player_h.x,player_h.y)+ speed); 
+        player_h.y = yIso(xOrt(player_h.x,player_h.y), yOrt(player_h.x,player_h.y)+ speed);
+        //player.anims.play('up');
+    }else{
+    	player_h.anims.play('idel_player_h', true);
+    }
+
+
+    //Teclas fantasma
+    if (keyJ.isDown)
+    {	
+        player_f.x = xIso(xOrt(player_f.x,player_f.y)- speed, yOrt(player_f.x,player_f.y)); 
+        player_f.y = yIso(xOrt(player_f.x,player_f.y)- speed, yOrt(player_f.x,player_f.y));
+        //player.anims.play('left', true);
+    }
+    else if (keyL.isDown)
+    {
+        player_f.x = xIso(xOrt(player_f.x,player_f.y)+ speed, yOrt(player_f.x,player_f.y)); 
+        player_f.y = yIso(xOrt(player_f.x,player_f.y)+ speed, yOrt(player_f.x,player_f.y)); 
+        //player.anims.play('right', true);
+    }
+    else if (keyI.isDown)
+    {
+        player_f.x = xIso(xOrt(player_f.x,player_f.y), yOrt(player_f.x,player_f.y)- speed); 
+        player_f.y = yIso(xOrt(player_f.x,player_f.y), yOrt(player_f.x,player_f.y)- speed);
+        //player.anims.play('down');
+    }
+
+    else if (keyK.isDown)
+    {
+        player_f.x = xIso(xOrt(player_f.x,player_f.y), yOrt(player_f.x,player_f.y)+ speed); 
+        player_f.y = yIso(xOrt(player_f.x,player_f.y), yOrt(player_f.x,player_f.y)+ speed);
+        //player.anims.play('up');
+    }else{
+    	player_f.anims.play('idel_player_f', true);
+
+    }
+
+
+
+
+}
+
+
+function printTextH(texto){
+	text_cTh.setText(texto);
+	cam3.visible = true;
+}
+function printTextF(texto){
+	text_cTf.setText(texto);
+	cam4.visible = true;
+}
+
+
+
+function selectItemH (x,y,list, index,scene){
+	
+	for(var i = 0; i< textListH.length; i++){	
+		textListH[i].destroy();
+	}
+	var i = 0;
+	list.forEach (function(value) {
+		
+		if(i == index){
+			textListH[i] = scene.add.text(x, y + (i*18) + 2, value,{ fontSize: '18px',fill:'#fff', fontStyle: 'bold' });
+	    }else{
+	    	textListH[i] = scene.add.text(x, y + (i*18) + 2, value,{ fontSize: '18px',fill:'#000', fontStyle: 'bold' });
+	    }
+	    textListH[i].depth = 10;
+		i++;
+	});
+	
+}
+
+function selectItemF (x,y,list, index,scene){
+	
+	for(var i = 0; i< textListF.length; i++){	
+		textListF[i].destroy();
+	}
+	var i = 0;
+	list.forEach (function(value) {
+		
+		if(i == index){
+			textListF[i] = scene.add.text(x, y + (i*18) + 2, value,{ fontSize: '18px',fill:'#fff', fontStyle: 'bold' });
+	    }else{
+	    	textListF[i] = scene.add.text(x, y + (i*18) + 2, value,{ fontSize: '18px',fill:'#000', fontStyle: 'bold' });
+	    }
+	    textListF[i].depth = 10;
+		i++;
+	});
+	
+}
+
+
+function createImagen(name,x,y){
+
+
+	console.log(name);
+	var object = matter.add.image(xIso(x,y), yIso(x,y), obtenerValorEtiqueta(name,'sprite'), 0, {
+		                		isStatic: false,
+		                		vertices:[{"x":0,"y":0}, 
+		                                  {"x":15,"y":7}, 
+		                                  {"x":30,"y":0}, 
+		                                  {"x":15,"y":-7}],
+		                	});
+	object.depth = dIso(xOrt(object.x,object.y),yOrt(object.x,object.y),2);
+	var category = obtenerValorEtiqueta(name,'categoria');
+	if(category == 2){
+		object.setCollisionCategory(cat2);
+		object.setCollidesWith([ cat1, cat2, cat4  ]);
+	}
+	if(category == 3){
+		object.setCollisionCategory(cat3);
+		object.setCollidesWith([ cat1, cat3, cat4  ]);
+	}
+	if(category == 4){
+		object.setCollisionCategory(cat4);
+		object.setCollidesWith([ cat1, cat2, cat3, cat4 ]);
+	}
+	object.name = name;
+	objetosMapa.add(object); 
+}
+
+function createSprite(name,x,y){
+	var shapes_o = scene.cache.json.get('shapes_' + obtenerValorEtiqueta(name,'sprite'));
+	var object = matter.add.sprite(xIso(x,y), yIso(x,y)+20, obtenerValorEtiqueta(name,'sprite'), 0, {shape: shapes_o.shape});
+
+	var category = obtenerValorEtiqueta(name,'categoria');
+	object.depth = dIso(xOrt(object.x,object.y),yOrt(object.x,object.y),2);
+	
+	object.name = name;
+	objetosMapa.add(object); 
+	object.anims.play('idel_' + obtenerValorEtiqueta(name,'sprite'), true);
+	
+	if(obtenerValorEtiqueta(name,'sprite') == 'player_h'){
+		player_h = object;
+		object.setCollisionCategory(cat2);
+		object.setCollidesWith([ cat1, cat2, cat4, cat5, cat7 ]);
+	}
+	else if(obtenerValorEtiqueta(name,'sprite') == 'player_f'){
+		player_f = object;
+		object.setCollisionCategory(cat3);
+		object.setCollidesWith([ cat1, cat3, cat4, cat6, cat7 ]);
+	}else{
+		if(category == 2){
+			object.setCollisionCategory(cat2);
+			object.setCollidesWith([ cat1, cat2, cat4 ]);
+		}
+		if(category == 3){
+			object.setCollisionCategory(cat3);
+			object.setCollidesWith([ cat1, cat3, cat4 ]);
+		}
+		if(category == 4){
+			object.setCollisionCategory(cat4);
+			object.setCollidesWith([ cat1, cat2, cat3, cat4 ]);
+		}
+	}
+		
+}
+
+function obtenerValorEtiqueta(cadena, etiqueta){
+	while(cadena.length > 0){
+		let indice = cadena.indexOf(";");
+		if(indice == -1){
+			return '';
+		}
+		let extraida = cadena.substring(0, indice);
+		cadena = cadena.substring(indice+1,cadena.length);
+		indice = extraida.indexOf("=");
+		if(indice == -1){
+			return '';
+		}
+		var extraida2 = extraida.substring(0, indice);
+		if(extraida2 == etiqueta){
+			return extraida.substring(indice+1,extraida.length);
+		}
+	}
+	return '';
+}
+
+</script>
+
+
+
+</body></html>
