@@ -433,6 +433,7 @@ Fonndo de pantalla de un hospital pixelart, boton para jugar y otro para ir a la
 ![image](https://user-images.githubusercontent.com/92433196/149874608-f986d334-0e2d-4c83-bdc5-8568615111a5.png)
 
 Pantalla de fin:
+
 ![image](https://user-images.githubusercontent.com/92433196/149874684-edc15603-9260-4d92-ad46-ee0e1b7ea431.png)
 
 Pantalla de creditos:
