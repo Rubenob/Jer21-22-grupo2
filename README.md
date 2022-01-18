@@ -483,32 +483,39 @@ Cliente → Solicitud de creación de WebShocket indicando conexión nueva
 	Valor: conexiónNueva
 	Clave: Subtipo
 	Valor: inicio
+	
 Cliente → Envío de solicitud de partida pública
 	Clave: Tipo
 	Valor: pública
+	
 Cliente → Envío de solicitud de partida privada
 	Clave: Tipo
 	Valor: privada
 	Clave: Mensaje
 	Valor: contraseña para la vincular usuarios
+	
 Cliente → Envío de solicitud de partida local
 	Clave: Tipo
 	Valor: local
+	
 Cliente → Envío de datos
 	Clave: Tipo
 	Valor: datos
 	Clave: Mensaje
 	Valor: los datos a enviar
+	
 Cliente → Envío de fin de partida
 	Clave: Tipo
 	Valor: fin
 	Clave: Mensaje
 	Valor: los datos a enviar
+	
 Servidor → Envío de error si una solicitud no es la esperada
 	Clave: Tipo
 	Valor: Error
 	Clave: Mensaje
 	Valor: Solicitud de conexión no esperada
+	
 Servidor → Envío de estado de espera de partida pública
 	Clave: Tipo
 	Valor: Esperando
@@ -516,6 +523,7 @@ Servidor → Envío de estado de espera de partida pública
 	Valor: Esperando otro usuario
 	Clave: Personaje
 	Valor: humano
+	
 Servidor → Envío de estado de espera de partida privada
 	Clave: Tipo
 	Valor: Esperando
@@ -523,6 +531,7 @@ Servidor → Envío de estado de espera de partida privada
 	Valor: Esperando otro usuario
 	Clave: Personaje
 	Valor: humano
+	
 Servidor → Envío de estado de comienzo de partida pública
 Se envían dos mensajes uno a cada integrante del grupo
 	Clave: Tipo
@@ -533,6 +542,7 @@ Se envían dos mensajes uno a cada integrante del grupo
 	Valor: identificador único del grupo
 	Clave: Personaje
 	Valor: humano o fantasma
+	
 Servidor → Envío de estado de comienzo de partida privada
 Se envían dos mensajes uno a cada integrante del grupo
 	Clave: Tipo
@@ -543,11 +553,13 @@ Se envían dos mensajes uno a cada integrante del grupo
 	Valor: identificador único del grupo
 	Clave: Personaje
 	Valor: humano o fantasma
+	
 Servidor → Envío de comienzo de partida local
 	Clave: Tipo
 	Valor: Local
 	Clave: Mensaje
 	Valor: Partida en modo Local
+	
 Servidor → Envío de datos para el juego
 	Clave: Tipo
 	Valor: Datos
@@ -557,11 +569,13 @@ Servidor → Envío de datos para el juego
 	Valor: humano o fantasma
 	Clave: Datos
 	Valor: datos
+	
 Servidor → Envío de comunicación de cerrado de sesión por parte de un usuario.
 	Clave: Tipo
 	Valor: Cerrado
 	Clave: Mensaje
 	Valor: El otro usuario cerró la sesión
+	
 Servidor → Envío de estado de fin de partida
 	Clave: Tipo
 	Valor: Fin
