@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/69243718/138761826-db49e65e-29c3-48c5-ac74-3a8d510415dd.png)
 # Game Design Document
-## Fase 1 Juegos en red
+## Fase 2 Juegos en red
 Practica Juegos en red universidad Rey Juan Carlos 
 
 
@@ -430,12 +430,15 @@ Empezamos en la pantalla principal, de la cual podemos ir a la pantalla de juego
 Pantalla principal:
 Fonndo de pantalla de un hospital pixelart, boton para jugar y otro para ir a la pantalla de creditos.
 
-![image](https://user-images.githubusercontent.com/69243718/145733726-a5def29f-1a8f-4c55-a365-e9f0aff4e577.png)
+![image](https://user-images.githubusercontent.com/92433196/149874608-f986d334-0e2d-4c83-bdc5-8568615111a5.png)
+
+Pantalla de fin:
+![image](https://user-images.githubusercontent.com/92433196/149874684-edc15603-9260-4d92-ad46-ee0e1b7ea431.png)
 
 Pantalla de creditos:
 Información sobre los creadores del videojuego y un botón de vuelta atras. 
 
-![image](https://user-images.githubusercontent.com/69243718/145733736-0ec394e7-a98f-4590-89ec-15b550c7c334.png)
+![image](https://user-images.githubusercontent.com/92433196/149874545-5c76f74a-d09b-4128-b323-d23db429d8e0.png)
 
 Tutorial:
 Movimiento, inventario y colisiones. 
