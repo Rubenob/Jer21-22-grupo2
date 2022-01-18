@@ -90,6 +90,11 @@ RUBÉN ORTEGA BERRUGUETE
 
 [8	Capturas de pantalla](#_Toc86089999)
 
+[9	Diagrama de clases ApiRest y websockets](#_Toc86089999)
+
+[10 Instrucciones precisas para ejecutar la aplicación](#_Toc86089999)
+
+
 # **1. Introducción**
 
 En este documento se tratará el contenido del diseño y desarrollo del videojuego Project G.H.O.S.T, mediante el cual se busca presentar los principales elementos que caracterizan al videojuego, desde el apartado de diseño, sus características técnicas en cuanto a comunicación red, como el apartado gráfico, arte y música.
@@ -460,7 +465,14 @@ Objetos y personajes de la historia:
 
 ![image](https://user-images.githubusercontent.com/69243718/145733972-8aa9c531-ef38-41df-aadd-3b7483602753.png)
 
-# **9**	**Referencias**
+# **9.	Diagrama de clases ApiRest y websocket**
+
+![clases](https://user-images.githubusercontent.com/69243718/149888692-ece80857-423d-4c75-b9ab-70086d3469ad.png)
+
+# **10. Instrucciones precisas para ejecutar la aplicación**
+Se debe descargar el proyecto de GitHub, posteriormenrte se habre en ecplise y asegurarse de tener instalado spring boot 4, una vez hecho se debe dar al boton de File open proyect on file system y a directorio, donde cargas la carpeta descargada. GAbrá que clicar en la raiz del proyecto, clickar en maven y actualizar el proyecto. Posteriormente se dara al run as como una aplicación spring, se cogera la ip de la maquina en la que se esta ejecutando y se poindra como url junto con :8080. 
+
+# **11**	**Referencias**
 - Ejemplo GDD: Fuente: https://github.com/dsaltares/siontower
 - Referencias para animaciones: Fuente: https://vsgif.com/gif/3132643
 - Referencias para la creación de los personajes: Fuente: https://www.inkoherence.com/pixel-art-juego-tronos/
