@@ -375,10 +375,6 @@ Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañ
 
 - **Segunda planta:** se trata de la planta de inicio para los jugadores, donde aún no saben prácticamente nada sobre su situación. Debe ser una música lenta, dará una sensación de tensión a los jugadores, incitándoles a salir de allí lo antes posible.
 
-- **Primera planta o planta baja:** para cuando los jugadores lleguen a esta planta, se habrán acostumbrado a las mecánicas y el estilo del juego, por lo que no será tan necesario que estén en tensión. La música será más relajada en comparación a la planta 1, pero sin abandonar su atmósfera de misterio.
-
-- **Subsuelo:** es el momento de más dudas para los jugadores, el momento crítico de revelación. En este punto, la música llegará a su mayor intensidad y tensión. En parte, deberá oprimir a los jugadores y mantenerlos alerta.
-
 - **Créditos:** una música de piano acompañará a los créditos finales.
 
 **Efectos:**
@@ -386,37 +382,20 @@ Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañ
 - **Navegación por la interfaz:** al pasar por cualquier botón del HUD.
 - **Selección de un botón**: al hacer click en cualquier botón del HUD.
 - **Pasos**: una serie de pisadas que acompañan al movimiento del humano.
-- **Goteo**: sonido de gotas cayendo de una cañería.
-
 - **Puerta:** al pasar de una habitación a otra.
-- **Viento:** soplido del viento del exterior.
-- **Susurros:** débiles susurros que sonarán de vez en cuando.
-- **Chirridos:** chirrido metálico al abrir y cerrar puertas.
 - **Muebles**: al arrastrar un mueble de un sitio a otro.
 - **Objeto encontrado**: al añadir un objeto al inventario.
-- **Objeto mundo espectral**: al añadir un objeto al inventario del ente.
-- **Plano espectral**: este plano está lleno de entes sufriendo y desesperados por llegar al más allá, por lo que es un sitio donde solo se escuchan sollozos, gritos agónicos y llantos rabiosos de impotencia.
 
 
 # **5**	**DISEÑO DE NIVEL**
 
 ## 5.1	MAPA
 
-El mapa se divide en 4 grandes zonas:
+
 
 - **La segunda planta**: planta con múltiples habitaciones en la que se encuentran los protagonistas y otros npc del videojuego. Además, hay otras zonas como los baños o la sala de estar para los pacientes.
 
-- **La primera planta, o planta baja**: En esta planta se encuentran el comedor, la recepción, la sala de espera, la sala de taquillas de los empleados, el baño de empleados y la cocina.
-
-- **El patio**: Es un patio con una fuente en el entro, que conecta la zona de recepción, la sala de empleados, el comedor y el edificio de administración (En el mapa referido como ‘mantenimiento’.
-
 ![image](https://user-images.githubusercontent.com/69243718/138848350-4db48dd7-9e05-4f6a-8a98-91d1f2daa4cd.png)
-
-
-- **El subsuelo**: zona final del juego que se desbloquea a medida que los jugadores avancen en el juego.
-
-![image](https://user-images.githubusercontent.com/69243718/138848371-238513e5-f263-45f4-86f3-2aec205fb555.png)
-
 
 
 ## 5.2	PUZZLES
