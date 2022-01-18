@@ -94,6 +94,7 @@ RUBÉN ORTEGA BERRUGUETE
 
 [10 Instrucciones precisas para ejecutar la aplicación](#_Toc86089999)
 
+[11 Protocolo Websockets](#_Toc86089999)
 
 # **1. Introducción**
 
@@ -472,7 +473,108 @@ Objetos y personajes de la historia:
 # **10. Instrucciones precisas para ejecutar la aplicación**
 Se debe descargar el proyecto de GitHub, posteriormenrte se habre en ecplise y asegurarse de tener instalado spring boot 4, una vez hecho se debe dar al boton de File open proyect on file system y a directorio, donde cargas la carpeta descargada. GAbrá que clicar en la raiz del proyecto, clickar en maven y actualizar el proyecto. Posteriormente se dara al run as como una aplicación spring, se cogera la ip de la maquina en la que se esta ejecutando y se poindra como url junto con :8080. 
 
-# **11**	**Referencias**
+# **11 Protocolo Websockets**
+Los datos se mandan en una cadena de texto con formato JSON. Esta cadena contiene las claves y los valores de estas para pasar de manera ordenada los datos necesarios. El formato seguido mantiene dependiendo del tipo de información enviada claves específicas.
+
+Cliente → Solicitud de creación de WebShocket indicando conexión nueva
+	Clave: Tipo
+	Valor: conexiónNueva
+	Clave: Subtipo
+	Valor: inicio
+Cliente → Envío de solicitud de partida pública
+	Clave: Tipo
+	Valor: pública
+Cliente → Envío de solicitud de partida privada
+	Clave: Tipo
+	Valor: privada
+	Clave: Mensaje
+	Valor: contraseña para la vincular usuarios
+Cliente → Envío de solicitud de partida local
+	Clave: Tipo
+	Valor: local
+Cliente → Envío de datos
+	Clave: Tipo
+	Valor: datos
+	Clave: Mensaje
+	Valor: los datos a enviar
+Cliente → Envío de fin de partida
+	Clave: Tipo
+	Valor: fin
+	Clave: Mensaje
+	Valor: los datos a enviar
+Servidor → Envío de error si una solicitud no es la esperada
+	Clave: Tipo
+	Valor: Error
+	Clave: Mensaje
+	Valor: Solicitud de conexión no esperada
+Servidor → Envío de estado de espera de partida pública
+	Clave: Tipo
+	Valor: Esperando
+	Clave: Mensaje
+	Valor: Esperando otro usuario
+	Clave: Personaje
+	Valor: humano
+Servidor → Envío de estado de espera de partida privada
+	Clave: Tipo
+	Valor: Esperando
+	Clave: Mensaje
+	Valor: Esperando otro usuario
+	Clave: Personaje
+	Valor: humano
+Servidor → Envío de estado de comienzo de partida pública
+Se envían dos mensajes uno a cada integrante del grupo
+	Clave: Tipo
+	Valor: Comienzo
+	Clave: Mensaje
+	Valor: Partida pública
+	Clave: Grupo
+	Valor: identificador único del grupo
+	Clave: Personaje
+	Valor: humano o fantasma
+Servidor → Envío de estado de comienzo de partida privada
+Se envían dos mensajes uno a cada integrante del grupo
+	Clave: Tipo
+	Valor: Comienzo
+	Clave: Mensaje
+	Valor: Partida privada
+	Clave: Grupo
+	Valor: identificador único del grupo
+	Clave: Personaje
+	Valor: humano o fantasma
+Servidor → Envío de comienzo de partida local
+	Clave: Tipo
+	Valor: Local
+	Clave: Mensaje
+	Valor: Partida en modo Local
+Servidor → Envío de datos para el juego
+	Clave: Tipo
+	Valor: Datos
+	Clave: Mensaje
+	Valor: Datos de usuario
+	Clave: Personaje
+	Valor: humano o fantasma
+	Clave: Datos
+	Valor: datos
+Servidor → Envío de comunicación de cerrado de sesión por parte de un usuario.
+	Clave: Tipo
+	Valor: Cerrado
+	Clave: Mensaje
+	Valor: El otro usuario cerró la sesión
+Servidor → Envío de estado de fin de partida
+	Clave: Tipo
+	Valor: Fin
+	Clave: Mensaje
+	Valor: Llegado al final
+	Clave: Datos
+	Valor: datos
+
+En el envío de información de tipo datos el servidor hace de puente entre los clientes del mismo grupo. Por lo tanto, hay una comunicación entre clientes. Este tipo de mensajes tienen el siguiente formato:
+Cliente A → Servidor →  Cliente B
+Envío de posición de un personaje
+	Clave: Tipo
+	Valor: datos
+
+# **12**	**Referencias**
 - Ejemplo GDD: Fuente: https://github.com/dsaltares/siontower
 - Referencias para animaciones: Fuente: https://vsgif.com/gif/3132643
 - Referencias para la creación de los personajes: Fuente: https://www.inkoherence.com/pixel-art-juego-tronos/
