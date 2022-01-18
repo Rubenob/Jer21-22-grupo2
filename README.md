@@ -367,7 +367,8 @@ Fuente: https://vsgif.com/gif/3132643
 
 ## 4.3	Audio 
 
-Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañará al gameplay en todo momento (la cual estará en formato .ogg), y los efectos de sonido que ayudarán a generar una atmósfera más misteriosa y sombría (convertidos a formato .wav).
+Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañará al gameplay en todo momento (la cual estará en formato .ogg), y los efectos de sonido que ayudarán a generar una atmósfera más misteriosa y sombría (convertidos a formato .wav). 
+Se ha utilizado la página Epidemic Sound como fuente de todos los efectos y música utilizados (enlace en el último punto de este documento).
 
 **Música:**
 
@@ -390,7 +391,6 @@ Se diferencian dos tipos de audio en Project G.H.O.S.T., la música que acompañ
 # **5**	**DISEÑO DE NIVEL**
 
 ## 5.1	MAPA
-
 
 
 - **La segunda planta**: planta con múltiples habitaciones en la que se encuentran los protagonistas y otros npc del videojuego. Además, hay otras zonas como los baños o la sala de estar para los pacientes.
@@ -468,3 +468,4 @@ Objetos y personajes de la historia:
   https://www.deviantart.com/luczynski
 - Ejemplos sobre videojuegos de aventura-gráfica: Fuente: https://www.youtube.com/watch?v=QMmL4c2TrY4
 - Artículo sobre la teoría del color y paletas de referencia: Fuente: https://soydecine.com/significado-de-los-colores
+- Enlace a la página principal de Epidemic Sound: https://www.epidemicsound.com/music/featured/?_us=adwords_brand&_usx=10135746194_epidemic%20sound&utm_source=google&utm_medium=paidsearch&utm_campaign=brand_10135746194&utm_term=epidemic%20sound&gclid=CjwKCAiAxJSPBhAoEiwAeO_fP4oYFr82jBNcWa0exxIBaAQuBzf9n8PjTPUPpdxGCe7Zw8o3Zb7wRxoCgUIQAvD_BwE
